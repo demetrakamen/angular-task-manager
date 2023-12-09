@@ -4,7 +4,7 @@
 2. Open 'server' folder in the terminal
 3. Run npm intall
 4. Start the fake server with npm start
-5.Start the app with npx ng serve
+5. Start the app with npx ng serve
 6. Open http://localhost:4200/
 
 Features:
