@@ -1,0 +1,17 @@
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav class="side-panel" mode="side" opened>
+    <button mat-button color="primary" (click)="onOpenCalendar()"> {{ openCalendar ? 'Close Calendar' : 'Select Date' }}
+      <mat-icon class="diplay-icon" aria-hidden="false" aria-label="Calendar icon" fontIcon="calendar_month"></mat-icon>
+    </button>
+
+    <mat-card class="demo-inline-calendar-card" *ngIf="openCalendar">
+      <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+    </mat-card>
+    <p>Selected date: {{selectedDate}}</p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-tasks-list [selectedDate]="selectedDate"></app-tasks-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>

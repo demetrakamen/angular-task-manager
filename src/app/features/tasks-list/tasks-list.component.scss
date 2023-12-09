@@ -1,0 +1,120 @@
+
+// @import url('https://fonts.googleapis.com/css?family=Niramit:300,300i,700');
+
+// reset some browser default styles
+// colors
+$primary: #1d8cf8;
+$secondary: #4f537b;
+$info: #11cdef;
+$success: #00bf9a;
+$warning: #ff8d72;
+$danger: #fd5d93;
+
+// timeline variables
+$body-bg: #1e1e2f;
+$timeline-before-bg : #222a42;
+$timeline-body-bg: #3F51B5;
+$timeline-body-round: 3px;
+$timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, .1);
+
+.task-card{
+  
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 50px auto;
+  position: relative;
+}
+
+.timeline-subtitle {
+  font-weight: 300;
+  // font-style: italic;
+  // opacity: .4;
+  margin-top:0px;
+  font-size: 11px;
+  color: #3F51B5;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 4rem;
+  margin: 0 0 0 30px;
+  color: black;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: $timeline-body-bg;
+  }
+
+
+  .timeline-container {
+    position: relative;
+    margin-bottom: 2.5rem;;
+
+  //   .timeline-icon {
+  //       position: absolute;
+  //       left: -95px;
+  //       top: 4px;
+  //       width: 70px;
+  //       height: 70px;
+  //       border-radius: 50%;
+  //       text-align: center;
+  //       font-size: 2rem;
+  //       background: #3F51B5;
+
+  //       mat-icon {
+  //           position: absolute;
+  //           left: 50%;
+  //           top: 50%;
+  //           transform: translate(-50%, -50%) scale(2);
+  //           color: white;
+
+  //           // &:hover {
+  //           //   color: #C5CAE9
+  //           // }
+  //       }
+
+   
+  //       // img {
+  //       //     width: 100%;
+  //       //     height: 100%;
+  //       //     border-radius: 50%;
+  //       // }
+  //   }
+  }
+}
+
+
+
+.create-task-icon {
+  position: fixed;
+  right: 100px;
+  bottom: 70px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 2rem;
+  background: #FF4081;
+
+  mat-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2.5);
+    color: white;
+
+    &:hover {
+      color: #C5CAE9
+    }
+  }
+}
+
+

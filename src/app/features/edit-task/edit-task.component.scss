@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+
+  div.time-picker {
+    margin-bottom: 15px;
+    background-color: whitesmoke;
+    border-bottom: solid 1px #8E8E8E;
+    height: 65px;
+
+    &.valid-data {
+      p {
+        color: #3F51B5;
+      }
+
+      border-bottom: solid 2px #3F51B5;
+    }
+
+    &.invalid-data {
+
+      p {
+        color: red;
+      }
+
+
+      border-bottom: solid 2px red;
+    }
+
+    div.ngx-timepicker-control__arrow {
+      top: -10px
+    }
+  }
+
+
+  .fields {
+    width: 250px;
+  }
+
+  .right-side-form {
+    margin-left: 20px;
+  }
+
+  .error {
+    top: -20px;
+    left: 11px;
+  }
+
+  ngx-timepicker-field {
+    display: inline-block;
+  }
+
+
+  input.ngx-timepicker-control__input {
+    background-color: whitesmoke;
+  }
+
+  .start {
+    margin-left: 15px;
+  }
+
+  .label {
+    margin-left: 20px;
+    font-size: 12px;
+    margin-bottom: 0px
+  }
+
+  .end {
+    margin-left: 15px;
+  }
+}
+
+.dialog-actions {
+  margin-top: 10px;
+  margin-left: 15px;
+}

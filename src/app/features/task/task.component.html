@@ -1,0 +1,36 @@
+<div class="main-container">
+  <p #timeIn12 class="timeline-subtitle">{{ task?.starts | date: 'shortTime' }} - {{ task?.ends | date: 'shortTime'}}</p>
+  <div class="timeline-icon">
+    <mat-icon class="icon-diplay" aria-hidden="false" aria-label="Problem icon" fontIcon="schedule"
+      matTooltip="Show/Hide full description"
+      (click)="onChangeVisibility()"></mat-icon>
+  </div>
+  <mat-card class="task-card timeline-body no-desc" [class.no-desc]="!isVisible">
+    <mat-card-header class="btn-task">
+      <mat-card-title class="timeline-title">
+        <span class="badge" [ngClass]="{done: task.done}">ID: {{task?.id}} {{ task?.title }}</span>
+      </mat-card-title>
+      <ng-container *ngIf="!isVisible">
+        <button mat-stroked-button color="primary" (click)="onEditTask(task)">Edit</button>
+        <button mat-stroked-button color="accent" (click)="onFinishTask(task.id, task.done)"> {{ task.done ? 'Undo': 'Finish'}} </button>
+      </ng-container>
+
+    </mat-card-header>
+    <mat-card-content *ngIf="isVisible">
+      <div> {{ task?.description }} </div>
+      <div *ngIf="task?.notes?.at(0) !== ''">
+        <ul >
+          <li *ngFor="let note of task?.notes">
+            {{ note }}
+          </li>
+        </ul>
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="isVisible" class="btn-task">
+      <button mat-stroked-button color="primary" (click)="onEditTask(task)">Edit</button>
+      <button mat-stroked-button color="accent" (click)="onFinishTask(task.id, task.done)">{{ task.done ? 'Undo': 'Finish'}} </button>
+      <button mat-stroked-button color="warn" (click)="onRemoveTask(task)">Delete</button>
+    </mat-card-actions>
+    <div *ngIf=""></div>
+  </mat-card>
+</div>

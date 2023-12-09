@@ -1,0 +1,106 @@
+<h1 mat-dialog-title>Edit Task</h1>
+<form (ngSubmit)="onFormSubmit(taskForm)" #taskForm="ngForm">
+  <div mat-dialog-content>
+    <div class="container">
+      <div>
+        <div>
+          <mat-form-field class="fields">
+            <mat-label>Task Title</mat-label>
+            <input id="task-title" #title="ngModel" matInput name="title" ngModel required minlength="3"
+              maxlength="120" />
+            <mat-error *ngIf="title.touched && title.errors?.['required']">You must enter a title</mat-error>
+            <mat-error *ngIf="title.touched && title.errors?.['minlength']">You must at least 3 characters</mat-error>
+            <mat-hint>Min 3 characters</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="fields">
+            <mat-label>Select Color</mat-label>
+            <mat-select name="color" required ngModel>
+              <mat-option value="blue">Blue</mat-option>
+              <mat-option value="pink">Pink</mat-option>
+              <mat-option value="green">Green</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <ng-container ngModelGroup="duration" #duration="ngModelGroup" [appTimePeriod]="['starts', 'ends']">
+
+          <div class="time-picker"
+            [ngClass]="{ 'invalid-data': !duration.valid,'valid-data': duration.valid && duration.touched } ">
+            <p class="label">Start*</p>
+            <ngx-timepicker-field class="time-picker start" [controlOnly]="true" name="starts" ngModel #picker
+              [defaultTime]="'11:00 am'" #starts="ngModel" required></ngx-timepicker-field>
+          </div>
+          <mat-error class="mat-mdc-form-field-subscript-wrapper error"
+            *ngIf="duration.errors?.['hoursDifference'] || duration.errors?.['minutesDifference']"> Invalid time
+            span</mat-error>
+          <div class="time-picker"
+            [ngClass]="{ 'invalid-data': !duration.valid, 'valid-data': duration.valid && duration.touched} ">
+            <p class="label">End* </p>
+            <ngx-timepicker-field class="time-picker end" [defaultTime]="'12:00 am'" required [controlOnly]="true"
+              name="ends" #ends="ngModel" ngModel></ngx-timepicker-field>
+          </div>
+          <mat-error class="mat-mdc-form-field-subscript-wrapper error"
+            *ngIf="duration.errors?.['hoursDifference'] || duration.errors?.['minutesDifference']"> Invalid time
+            span</mat-error>
+        </ng-container>
+
+        <div class="notification">
+          <mat-checkbox class="checkbox-margin" name="notification" ngModel>Notification</mat-checkbox>
+        </div>
+      </div>
+
+      <div class="right-side-form">
+        <div>
+          <mat-form-field class="fields">
+            <mat-label>Select Prioriority</mat-label>
+            <mat-select required  name="priority" ngModel>
+              <mat-option value="low">Low</mat-option>
+              <mat-option value="medium">Medium</mat-option>
+              <mat-option value="high">High</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="fields">
+            <mat-label>Description</mat-label>
+            <textarea matInput maxlength="300" placeholder="Describing the task..." name="description"
+              ngModel></textarea>
+            <mat-hint>Max 300 characters </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="fields">
+            <mat-label>Notes</mat-label>
+            <textarea matInput maxlength="300" placeholder="Use a comma ',' as a separator" name="notes"
+              ngModel></textarea>
+            <mat-hint>Max 300 characters </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="fields">
+            <mat-label>Days of repetition</mat-label>
+            <span class="number-wrapper">
+              <input name="days" matInput type="number" value="1" min="1" max="30" maxlength="2" ngModel #days="ngModel"
+                required pattern="\b([1-9]|[12][0-9]|3[01])\b">
+            </span>
+            <mat-error *ngIf="days.touched && days.errors">Incorrect number of days</mat-error>
+            <mat-hint>Repeat the task for max 31 days</mat-hint>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="dialog-actions" mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="onCancel()">Cancel</button>
+    <button mat-stroked-button color="accent" type="submit" [mat-dialog-close]=""
+      [disabled]="taskForm.invalid">Save</button>
+  </div>
+</form>

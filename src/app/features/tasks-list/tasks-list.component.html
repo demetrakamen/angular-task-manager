@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 #currentDate> {{ selectedDate | date: 'MMMM dd, yyyy' }}</h1>
+  <div class="timeline">
+    <ng-container *ngFor="let task of tasks$ | async">
+
+      <div class="timeline-container primary">
+        <ng-container>
+          <app-task [task]="task" [selectedDate]="selectedDate" class="task-card"></app-task>
+        </ng-container>
+        <div class="overlapping" *ngIf="task.overlapping[0] !== null && task.overlapping.length > 0">Overlapping with tasks {{task.overlapping}}</div>
+      </div>
+
+    </ng-container>
+
+  </div>
+
+
+  <div class="create-task-icon" matTooltip="Create new task" (click)="onCreateTask()">
+    <mat-icon class="icon-diplay" aria-hidden="false" aria-label="Problem icon" fontIcon="add_circle"></mat-icon>
+  </div>
+</div>
